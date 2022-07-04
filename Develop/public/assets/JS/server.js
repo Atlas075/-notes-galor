@@ -13,34 +13,34 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-app.get("/api/notes", (req, res) => {
+app.get("/Develop/public/notes.html", (req, res) => {
   res.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
-app.post("/api/notes", (req, res) => {
-  const notes = JSON.parse(fs.readFileSync("../../../db/db.json"));
+app.post("/Develop/public/notes.html", (req, res) => {
+  const notes = JSON.parse(fs.readFileSync("/db/db.json"));
   const newNotes = req.body;
   newNotes.id = uuid.v4();
   notes.push(newNotes);
-  fs.writeFileSync("../../../db/db.json", stringify(notes));
+  fs.writeFileSync("/db/db.json", stringify(notes));
   res.json(notes);
 });
 
-app.delete("/api/notes/:id", (req, res) => {
-  const notes = JSON.parse(fs.readFileSync(".../../../db/db.json"));
+app.delete("/Develop/public/notes.html/:id", (req, res) => {
+  const notes = JSON.parse(fs.readFileSync("/db/db.json"));
   const deleteNotes = notes.filter((rmvNote) => rmvNote.id !== req.params.id);
-  fs.fstat.writeFileSync("../../../db/db.json", JSON.stringify(deleteNotes));
+  fs.fstat.writeFileSync("/db/db.json", JSON.stringify(deleteNotes));
   res.json(deleteNotes);
 });
 
 app.get("/notes", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/assets/html/notes.html"));
+  res.sendFile(path.join(__dirname, "/Develop/public/notes.html"));
 });
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/assets/html/index.html"));
+  res.sendFile(path.join(__dirname, "/Develop/public/index.html"));
 });
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/assets/html/index.html"));
+  res.sendFile(path.join(__dirname, "/Develop/public/index.html"));
 });
 
 app.listen(PORT, function () {

@@ -4,7 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-if (window.location.pathname === "../../../public/assets/html/notes.html") {
+if (window.location.pathname === "/notes") {
   noteTitle = document.querySelector(".note-title");
   noteText = document.querySelector(".note-textarea");
   saveNoteBtn = document.querySelector(".save-note");
@@ -26,7 +26,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch("/public/assets/html/notes.html", {
+  fetch("/Develop/public/notes.html", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const getNotes = () =>
   });
 
 const saveNote = (note) =>
-  fetch("/public/assets/html/notes.html", {
+  fetch("/Develop/public/notes.html", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const saveNote = (note) =>
   });
 
 const deleteNote = (id) =>
-  fetch(`/public/assets/html/notes.html/${id}`, {
+  fetch(`/Develop/public/notes.html/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
